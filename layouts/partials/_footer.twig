@@ -1,0 +1,40 @@
+{% set blogInfo = _Blog.getHomeBlogSettings()%}
+{% set ftClass = "footer-main__container__listing--justify-end" %}
+{% if blogInfo.social['facebook'] is not empty or blogInfo.social['twitter'] is not empty or blogInfo.social['instagram'] is not empty or blogInfo.social['youtube'] is not empty %}
+    {% set ftClass = "" %}
+{% endif %}
+<footer class="footer">
+    <!-- Begin Footer CTA section -->
+    {{ this.render('./../../partials/_contribute_red_shield.twig', {network:network, keyword: 'contribute_red_shield'}) | raw }}    
+    <!-- End Footer CTA section -->
+
+    <!-- Begin footer main section -->
+    <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="footer-main__container d-flex justify-content-between align-items-center">
+                        <div class="footer-main__container--logo">
+                            {% set mainLogo = network.templatePath~'/static/images/logos/salvation-logo.svg' %}
+                            {% set logoUrl = network.networkLogoLinkUrl %}
+                            {% if network.logoMedia | length > 0 %}
+                                {% set mainLogo = _Media.getMediaUrl(network.logoMedia, 177, 65, {'crop': 'limit'} )%}
+                            {% endif %}
+                            <a href="{{logoUrl}}">
+                                <img class="img-fluid" src="{{mainLogo}}" alt="footer logo" />
+                            </a>
+                        </div>
+                        <div class="footer-main__container__listing {{ftClass}}">
+                            <a class="footer-main__container__listing--items privacy" target="_blank" href="http://www.salvationarmy.org.au/Privacy/">Privacy Policy</a>
+                            <a class="footer-main__container__listing--items terms" target="_blank" href="http://www.salvationarmy.org.au/Terms-of-Use/">Terms of Use</a>
+                            <div class="footer-main__container__listing--items no-link">Copyright 2018 The Salvation Army</div>
+                            <div class="footer-main__container__listing--items no-link">Donations over $2 are tax deductible<span>(ABN: 18 730 899 453)</span></div>
+                        </div>
+                        {{ this.render('social-links.twig', {blogInfo: blogInfo}) | raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <!-- End footer main section -->
+</footer>

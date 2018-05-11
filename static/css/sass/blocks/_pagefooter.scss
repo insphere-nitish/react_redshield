@@ -1,0 +1,121 @@
+/* Page Footer section
+================================ */
+.footer {
+    &-main {
+        @include padding(30 0);
+        border-top: 1px solid $border;
+        &__container {
+            width: $viewportSize;
+            @media #{$media-ipadSmall} {
+                @include flex-direction(column,vertical);
+            }
+            &--logo {
+                a {
+                    display: block;
+                    width: 50px;
+                }
+            }
+            &__listing {
+                @include flexbox();
+                width: $viewportSize;
+                @include align-items(center); 
+                &--justify-end {
+                    @include justify-content(flex-end);
+                }
+                @media #{$media-ipadSmall} {
+                    margin: 15px 0;
+                    @include flex-direction(column,vertical);
+                    text-align: center;
+                }
+                &--items {
+                    @include margin(0 20);
+                    @include font-size(17);
+                    @extend .font-regular;
+                    position: relative;
+                    span {
+                        display: block;
+                        margin-top: 5px;
+                    }
+                    @include transition(all 0.3s ease);
+                    @media #{$media-desktop} {
+                        @include font-size(15);
+                        @include margin(0 10);
+                    }
+                    @media #{$media-ipadSmall} {
+                        @include margin(10 0);
+                    }
+                    &:hover, &:focus {
+                        color: $red;
+                    }
+                    &.privacy {
+                        @include margin-right(0);
+                    }
+                    &.terms {
+                        @include margin-left(0);
+                        &:before {
+                            content: '';
+                            width: 20px;
+                            height: 1px;
+                            background-color: $black2;
+                            display: inline-block;
+                            vertical-align: middle;
+                            @include margin(0 8 0 18);
+                        }
+                    }
+                    @media #{$media-ipadPortrait} {
+                        &.privacy, &.terms {
+                            @include margin(0 10);
+                            &:before {
+                               display: none;
+                           }
+                        }
+                    }
+                    @media #{$media-ipadSmall} {
+                        &.privacy, &.terms {
+                            @include margin(10 0);
+                        }
+                    }
+                    /* &.terms {
+                        @include margin-left(40);
+                        @include padding-left(8); 
+                        &:before {
+                            content: '';
+                            width: 20px;
+                            height: 2px;
+                            background-color: $black2;
+                            position: absolute;
+                            left: -20px;
+                            top: 55%;
+                            @include translate(0,-50%);
+                            
+                        }
+                    } */
+                    &.no-link {
+                        &:hover, &:focus {
+                            color: $black2;
+                        }
+                    }
+                }
+            }
+            &__social {
+                width: 135px;
+                @media #{$media-ipadPortrait} {
+                    width: 170px;
+                    text-align: center;
+                }
+                a {
+                    color: $blue;
+                    margin: 0 4px;
+                    @include transition(all 0.3s ease);
+                    .fa {
+                        @include font-size(18);
+                        line-height: 1;
+                    }
+                    &:hover, &:focus {
+                        color: $red;
+                    }
+                }
+            }
+        }
+    }
+}

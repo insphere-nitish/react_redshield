@@ -1,0 +1,84 @@
+/* banner section
+================================ */
+.banner__section {
+    height: 100vh; 
+    min-height: 550px;
+    position: relative;
+    background-color: $blue;
+    @media #{$media-ipadSmall} {
+        height: inherit; 
+        min-height: 100vh;
+    }
+    &:after {
+        content: '';
+        z-index: 99;
+        @include linear-gradient(rgba(25, 44, 84, 0.2), $zblack);
+        @include size(#{$viewportSize});
+        position: absolute;
+        top: 0;
+        left: 0; 
+    }
+    &-content {
+        position: relative;
+        z-index: 100;
+        max-width: 700px;
+        width: 90%;
+        height: 100vh; 
+        min-height: 500px;
+        .play-icon {
+            @include margin-top(40);
+            display: none;
+            cursor: pointer;
+            &:before {
+                content: '\f144';
+                font-family: $iconfont;
+                color: $red;
+                @include font-size(140);
+                @media #{$media-tablet} {
+                    @include font-size(60);
+                }
+            }
+        }
+        h1 {
+            @include font-size(50);
+            line-height: 1.3 !important;
+            @extend .font-light;
+            color: $white;
+            width: $viewportSize;
+            @media #{$media-tablet} {
+                @include font-size(30);
+            }
+        }
+        p {
+            @include font-size(20);
+            @include padding(0 20px);
+            color: $white;
+            @include opacity(0.8);
+            width: $viewportSize; 
+            /* @extend .font-medium; */
+            margin-top: 30px;
+            @media #{$media-tablet} {
+                margin-top: 20px;
+                @include font-size(16);
+            }
+        }
+        .button {
+            margin-top: 40px;
+            @media #{$media-ipadSmall} {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            @media #{$media-tablet} {
+                @include font-size(14);
+                @include padding(10 16);
+            }
+        }
+    }
+    &.video {
+        .banner__section-content {
+            .play-icon {
+                display: block;
+            }
+        }
+    }
+}

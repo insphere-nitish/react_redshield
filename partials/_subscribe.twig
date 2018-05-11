@@ -1,0 +1,50 @@
+{% set ctaBackgroundImage = "" %}
+{% if keyword is defined and keyword is not empty %}
+    {% set cta = _CallToAction.getKeywordBasedCTA(keyword)%}
+    {% if cta is defined and cta|length > 0 %}
+        {% if cta.id is defined and cta.id is not empty %}            
+            {% if(cta.media['id'] is defined and cta.media['id'] is not empty) %}
+                {% set ctaBackgroundImage = _Media.getMediaUrl(cta.media,0,0,{'crop': 'fill'}) %}
+            {% endif %}
+            {{this.registerCss("
+                .cta_block_"~cta.id~" .button {
+                    border-color: "~cta.button['backgroundColor']~";
+                    background: "~cta.button['backgroundColor']~"
+                }
+                .cta_block_"~cta.id~" .button:hover {
+                    color: "~cta.button['backgroundColor']~";
+                    border-color: "~cta.button['backgroundColor']~";
+                    background: "~cta.button['backgroundColor']~";
+                } 
+            ")}}
+            <div class="clearfix"></div>
+            <!-- Begin Subscribe CTA section -->
+            <div class="cta-wrap cta-wrap__subscribe blue-bg cta_block_{{cta.id}} {% if ctaBackgroundImage %} image-covered cta-wrap__imaged {% endif %}" style="{{ (ctaBackgroundImage is not empty) ? 'background-image: url('~ctaBackgroundImage~');' : ''}}{{ (cta.backgroundColor is not empty) ? 'background-color: '~cta.backgroundColor~';' : ''}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="cta-wrap__main">
+                                <div class="cta-wrap__main--sl">
+                                    <div class="cta-wrap__main--title">{{cta.title |raw}}</div>
+                                    <div class="cta-wrap__main--description">{{cta.description |raw}}</div>
+                                </div>
+                                <div class="cta-wrap__main--sr">
+                                    <form id="subForm" class="js-cm-form" action="https://www.createsend.com/t/subscribeerror?description=" method="post" data-id="191722FC90141D02184CB1B62AB3DC2653358B42BF2B235B33DBD03580926255A127F2FB8E62EE28DE2A8A75B92E671591CFE723998F64CEFE36D01AB6B1120D"> 
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input id="fieldEmail" class="js-cm-email-input" name="cm-gjdltt-gjdltt" type="email" required />
+                                                {% if cta.button.text is defined and cta.button.text is not empty %}
+                                                    <button class="button button--red js-cm-submit-button" type="submit">{{cta.button['text'] |raw }}</button>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endif %}

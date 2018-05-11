@@ -1,0 +1,53 @@
+{% set ctaBackgroundImage = "" %}
+{% if keyword is defined and keyword is not empty %}
+    {% set cta = _CallToAction.get({'keywords': keyword, 'includeMetaInfo': 1})%}
+    {% if cta is defined and cta|length > 0 %}
+        {% if cta.id is defined and cta.id is not empty %}            
+            {% if(cta.media['id'] is defined and cta.media['id'] is not empty) %}
+                {% set ctaBackgroundImage = _Media.getMediaUrl(cta.media,0,0,{'crop': 'fill'}) %}
+            {% endif %}
+            {{this.registerCss("
+                .cta_block_"~cta.id~" .button {
+                    border-color: "~cta.button['backgroundColor']~";
+                    background: "~cta.button['backgroundColor']~"
+                }
+                .cta_block_"~cta.id~" .button:hover {
+                    color: "~cta.button['backgroundColor']~";
+                    border-color: "~cta.button['backgroundColor']~";
+                    background: none repeat scroll 0 0
+                } 
+            ")}}
+            <div class="clearfix"></div>
+            <!-- Begin CTA section -->
+            <div class="cta-wrap cta-wrap__action blue-bg cta_block_{{cta.id}} {% if ctaBackgroundImage %} image-covered cta-wrap__imaged {% endif %}"{% if ctaBackgroundImage is not empty or cta.backgroundColor is not empty %} style="{{ (ctaBackgroundImage is not empty) ? 'background-image: url('~ctaBackgroundImage~');' : ''}}{{ (cta.backgroundColor is not empty) ? 'background-color: '~cta.backgroundColor~';' : ''}}"{% endif %}>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="cta-wrap__main">
+                                <div class="cta-wrap__main--logo">
+                                    <img class="img-fluid" src="{{network.templatePath}}/static/images/logos/salvation-logo.svg" alt="CTA logo" />
+                                </div>
+                                <div class="cta-wrap__main--title"></div>
+                                <div class="cta-wrap__main--description">{{cta.title |raw}}</div>
+                                <div class="cta-wrap__main--buttons">
+                                    {% if cta.additionalInfo.cta_fundraise_url is defined and cta.additionalInfo.cta_fundraise_url is not empty %}
+                                        <a class="button button--radius button--black" href="{{cta.additionalInfo.cta_fundraise_url}}">FUNDRAISE</a>
+                                    {% endif %}
+                                    
+                                    {% if cta.additionalInfo.cta_donate_url is defined and cta.additionalInfo.cta_donate_url is not empty %}
+                                        <a class="button button--radius button--red" href="{{cta.additionalInfo.cta_donate_url}}">DONATE</a>
+                                    {% endif %}
+                                    
+                                    {% if cta.additionalInfo.cta_volunteer_url is defined and cta.additionalInfo.cta_volunteer_url is not empty %}
+                                        <a class="button button--radius button--lightBlue" href="{{cta.additionalInfo.cta_volunteer_url}}">VOLUNTEER</a>
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endif %}

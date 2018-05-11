@@ -1,0 +1,63 @@
+@charset "utf-8";  
+/* CSS Document */ 
+
+/*! ATTENTION:This project uses SASS! Please make your CSS edits in sass/default.scss. */
+
+/* Basic Includes
+   ================================ */
+@import 'variables'; 
+@import 'mixins';
+@import 'reset';
+@import 'custom_grid'; 
+@import 'typography';
+  
+/* Begin Basic Coding
+   ================================ */
+/* Basic 
+----------------------------- */
+html,
+body {
+    @include size(#{$viewportSize});
+    min-height: 100% !important;
+}
+body {
+    height: auto; 
+    background:$defaultbg none repeat scroll 0 0;
+    color: $black2;
+    font-family: $primary-fonts-regular;
+    font-weight: $weightRegular;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+ul li, ol li {
+    font-weight: $weightRegular;
+}
+.page__body {
+    @include padding(120 0 80);
+}
+.load__more--content {
+    @include padding(16 0 36);
+}
+/* End Basic Coding
+   ================================ */
+
+/* Miscellaneous Includes
+   ================================ */
+@import 'blocks/globalClasses';
+@import 'blocks/generic-content';
+@import 'blocks/buttons';
+@import 'blocks/form'; 
+@import 'blocks/banner';
+@import 'blocks/table';
+@import 'blocks/pageheader'; 
+@import 'blocks/pagefooter';
+@import 'blocks/cta-section';
+@import 'blocks/articles'; 
+@import 'blocks/cards';
+@import 'blocks/modal';
+@import 'blocks/search';
+@import 'blocks/blog';
+@import 'blocks/dependencies_Breakup'; 
+
+/* Pages Includes
+   ================================ */

@@ -1,0 +1,74 @@
+{{ set(this, 'params', {isHomePageOnly: "1"})  }}
+{% set network = _Network.getNetworkData() %}
+{{set(this,'title',(network.title))}}
+{% set limit = 13 %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+{#{{_AppHelper.printArray(blogList)}}#}
+{{this.registerJs("HomeController.listing();")}}
+<!-- Begin about Banner section markup -->
+{{ this.render('partials/_home-top-page.twig', {network:network, keyword: 'home_top_page'}) | raw }}
+{{ this.render('partials/_red_shield_appeal.twig', {network:network, keyword: 'red_shield_appeal'}) | raw }}
+
+<!-- End about Banner section markup -->
+<!-- End About CTA section -->
+<div class="clearfix"></div>
+<!-- Begin learning CTA section -->
+
+{% if articles|length > 0 %}
+    {% if articles[0] is defined %}
+        <div class="container-fluid">
+            <div class="row">
+                 {{this.render('partials/_single-article.twig', {article: articles[0], 'position': 1, class: 'col-12  card__view-full single px-0'}) | raw}}            
+            </div>
+
+        </div>
+        {{ this.render('partials/_contribute_red_shield.twig', {network:network, keyword: 'contribute_red_shield'}) | raw }}
+            
+        <div class="clearfix"></div>
+        <!-- Begin cards design section -->
+        <div class="card-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="text-center fs-52 font-light">Thanks To You</h3>
+                        <div class="row">
+                        {% for i in 1..3 %}
+                            {% if articles[i] is defined %}
+                                {{this.render('partials/_single-article.twig', {network: network, article: articles[i], 'position': i+1, class: 'col-md-4 card__view-third'}) | raw}} 
+                            {% endif %}
+                        {% endfor %}
+                            <div class="col-md-12 text-center mt--c06">
+                                <a class="button button--radius button--red" href="/@thanks">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {{ this.render('partials/_subscribe.twig', {network:network, keyword: 'subscribe'}) | raw }}
+        <div class="clearfix"></div>
+        <!-- Begin cards design section -->
+        <div class="card-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="text-center fs-52 font-light red--color">Our Community</h3>
+                        <div class="row ajaxArticles" data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}" data-offset="{{limit}}">
+                        {% for i in 4..13 %}
+                            {% if articles[i] is defined %}
+                                {{this.render('partials/_single-article.twig', {network: network, article: articles[i], 'position': i+1, class: 'col-md-4 card__view-third'}) | raw}} 
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center load__more--content loadMoreArticles">
+            <button class="button button__icon--left button--red button--radius"><i class="fa fa-spin"></i>Load more</button>
+        </div>
+        {% endif %} 
+{% endif %}
