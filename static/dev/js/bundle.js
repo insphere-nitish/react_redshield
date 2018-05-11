@@ -91,7 +91,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var API_KEY = 'AIzaSyDj8utu0QZn566G8V64_Ft6wBduHy5kLsRJoU';
+	var API_KEY = 'Your API KEY';
 
 	var App = function (_Component) {
 	  _inherits(App, _Component);
