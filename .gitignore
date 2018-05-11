@@ -1,0 +1,11 @@
+node_modules/
+/nbproject/private/
+
+/node_modules
+npm-debug.log
+.DS_Store
+
+# IntelliJ
+*.iml
+/.idea
+config.json

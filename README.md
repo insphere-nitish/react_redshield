@@ -1,1 +1,1 @@
-"# react_redshield" 
+"# react_redshield theme for Red Shield" 
