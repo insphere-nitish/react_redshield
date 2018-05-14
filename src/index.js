@@ -2,16 +2,29 @@ import _ from 'lodash';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/header';
+import Footer from './components/footer';
 
 
-class App extends Component { 
+class HeaderSeaction extends Component { 
   render(){
     return (
       <div>
-        <Header networkData={videoSearch} />
+        <Header />
       </div>
     );
   }
 
 }
-ReactDOM.render(<App/>, document.querySelector('.container'));
+ReactDOM.render(<HeaderSeaction/>, document.querySelector('.page__header'));
+
+class FooterSection extends Component { 
+  render(){
+    return (
+      <div>
+        <Footer />
+      </div>
+    );
+  }
+
+}
+ReactDOM.render(<FooterSection/>, document.querySelector('.page__footer'));

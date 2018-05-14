@@ -77,13 +77,14 @@
         {% if network.thirdPartyIntegrations['googleTagManager'] | length > 0 %}
             {{network.thirdPartyIntegrations['googleTagManager']['noscript'] | raw}}
         {% endif %}
-        
-{#        {{ this.render('partials/_header.twig', {network:network, blog:blog}) | raw }}#}
+        <div class="page__header"></div>
         
         <div class="clearfix"></div>
         {{ content | raw }}
         <div class="clearfix"></div>
-        {{ this.render('partials/_footer.twig', {network:network, blog:blog}) | raw }}
+        
+        <div class="page__footer"></div>
+{#        {{ this.render('partials/_footer.twig', {network:network, blog:blog}) | raw }}#}
         <div class="clearfix"></div>
         {{ this.render('partials/_javascript.twig', {network: network}) | raw }}
 

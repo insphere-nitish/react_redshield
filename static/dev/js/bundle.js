@@ -67,9 +67,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _header = __webpack_require__(46);
+	var _header = __webpack_require__(28);
 
 	var _header2 = _interopRequireDefault(_header);
+
+	var _footer = __webpack_require__(30);
+
+	var _footer2 = _interopRequireDefault(_footer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -79,30 +83,55 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var App = function (_Component) {
-	  _inherits(App, _Component);
+	var HeaderSeaction = function (_Component) {
+	  _inherits(HeaderSeaction, _Component);
 
-	  function App() {
-	    _classCallCheck(this, App);
+	  function HeaderSeaction() {
+	    _classCallCheck(this, HeaderSeaction);
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (HeaderSeaction.__proto__ || Object.getPrototypeOf(HeaderSeaction)).apply(this, arguments));
 	  }
 
-	  _createClass(App, [{
+	  _createClass(HeaderSeaction, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_header2.default, { networkData: videoSearch })
+	        _react2.default.createElement(_header2.default, null)
 	      );
 	    }
 	  }]);
 
-	  return App;
+	  return HeaderSeaction;
 	}(_react.Component);
 
-	_reactDom2.default.render(_react2.default.createElement(App, null), document.querySelector('.container'));
+	_reactDom2.default.render(_react2.default.createElement(HeaderSeaction, null), document.querySelector('.page__header'));
+
+	var FooterSection = function (_Component2) {
+	  _inherits(FooterSection, _Component2);
+
+	  function FooterSection() {
+	    _classCallCheck(this, FooterSection);
+
+	    return _possibleConstructorReturn(this, (FooterSection.__proto__ || Object.getPrototypeOf(FooterSection)).apply(this, arguments));
+	  }
+
+	  _createClass(FooterSection, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_footer2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return FooterSection;
+	}(_react.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(FooterSection, null), document.querySelector('.page__footer'));
 
 /***/ }),
 /* 2 */
@@ -31858,33 +31887,339 @@
 	module.exports = camelize;
 
 /***/ }),
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */
-/***/ (function(module, exports) {
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	/* 
-	 * To change this license header, choose License Headers in Project Properties.
-	 * To change this template file, choose Tools | Templates
-	 * and open the template in the editor.
-	 */
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Header = function (_Component) {
+	    _inherits(Header, _Component);
+
+	    function Header(props) {
+	        _classCallCheck(this, Header);
+
+	        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+	        _this.state = {
+	            mainLogo: '',
+	            logoUrl: ''
+	        };
+	        _this.getNetworkData();
+	        return _this;
+	    }
+
+	    _createClass(Header, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'header',
+	                { className: 'header' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-12' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'd-flex justify-content-between align-items-center header__section' },
+	                                _react2.default.createElement(
+	                                    'aside',
+	                                    { className: 'header__section-left' },
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { className: 'main-logo', href: this.state.logoUrl },
+	                                        _react2.default.createElement('img', { src: this.state.mailLogo, className: 'img-fluid', alt: 'logo' })
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'aside',
+	                                    { className: 'header__section-right' },
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: 'https://www.my.salvationarmy.org.au/donation/red-shield', target: '_blank', className: 'button button--radius button--red' },
+	                                        'Donate'
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'getNetworkData',
+	        value: function getNetworkData() {
+	            var _this2 = this;
+
+	            $.fn.getNetworkData({
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    _this2.setState({
+	                        mailLogo: data.templatePath + '/static/images/logos/salvation-logo.svg',
+	                        logoUrl: data.networkLogoLinkUrl
+	                    });
+	                    if (Object.keys(data.logoMedia).length > 0) {
+	                        var ImageUrl = $.fn.image({ media: data.logoMedia, mediaOptions: { width: 177, height: 65, crop: 'limit' } });
+	                        _this2.setState({
+	                            mailLogo: ImageUrl
+	                        });
+	                    }
+	                }
+	            });
+	        }
+	    }]);
+
+	    return Header;
+	}(_react.Component);
+
+	;
+	exports.default = Header;
+
+/***/ }),
+/* 29 */,
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _socialLinks = __webpack_require__(31);
+
+	var _socialLinks2 = _interopRequireDefault(_socialLinks);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Footer = function (_Component) {
+	    _inherits(Footer, _Component);
+
+	    function Footer(props) {
+	        _classCallCheck(this, Footer);
+
+	        var _this = _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
+
+	        _this.state = {
+	            footerLogo: '',
+	            logoUrl: '',
+	            ftClass: 'footer-main__container__listing--justify-end',
+	            socialData: null
+	        };
+	        _this.getNetworkData();
+	        _this.getHomeBlogSettings();
+	        return _this;
+	    }
+
+	    _createClass(Footer, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'footer',
+	                { className: 'footer' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'footer-main' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'container' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'row' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'footer-main__container d-flex justify-content-between align-items-center' },
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: 'footer-main__container--logo' },
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: this.state.logoUrl },
+	                                            _react2.default.createElement('img', { className: 'img-fluid', src: this.state.footerLogo, alt: 'footer logo' })
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: "footer-main__container__listing " + this.state.ftClass },
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { className: 'footer-main__container__listing--items privacy', target: '_blank', href: 'http://www.salvationarmy.org.au/Privacy/' },
+	                                            'Privacy Policy'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { className: 'footer-main__container__listing--items terms', target: '_blank', href: 'http://www.salvationarmy.org.au/Terms-of-Use/' },
+	                                            'Terms of Use'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'footer-main__container__listing--items no-link' },
+	                                            'Copyright 2018 The Salvation Army'
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'footer-main__container__listing--items no-link' },
+	                                            'Donations over $2 are tax deductible',
+	                                            _react2.default.createElement(
+	                                                'span',
+	                                                null,
+	                                                '(ABN: 18 730 899 453)'
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(_socialLinks2.default, { socialData: this.state.socialData })
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'getNetworkData',
+	        value: function getNetworkData() {
+	            var _this2 = this;
+
+	            $.fn.getNetworkData({
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    _this2.setState({
+	                        footerLogo: data.templatePath + '/static/images/logos/salvation-logo.svg',
+	                        logoUrl: data.networkLogoLinkUrl
+	                    });
+	                    if (Object.keys(data.logoMedia).length > 0) {
+	                        var ImageUrl = $.fn.image({ media: data.logoMedia, mediaOptions: { width: 177, height: 65, crop: 'limit' } });
+	                        _this2.setState({
+	                            footerLogo: ImageUrl
+	                        });
+	                    }
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'getHomeBlogSettings',
+	        value: function getHomeBlogSettings() {
+	            var _this3 = this;
+
+	            $.fn.getHomeBlogSettings({
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    if (data.social.facebook !== null || data.social.twitter !== null || data.social.instagram !== null || data.social.youtube !== null) {
+	                        _this3.setState({
+	                            ftClass: ''
+	                        });
+	                    } else {
+	                        _this3.setState({
+	                            socialData: data.social
+	                        });
+	                    }
+	                }
+	            });
+	        }
+	    }]);
+
+	    return Footer;
+	}(_react.Component);
+
+	;
+	exports.default = Footer;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function GenerateLinks(data) {
+	    var Links = '';
+	    for (var social in data) {
+	        Links += '<a href={social} target="_blank"><i class="fa fa-"+{social}+"-official"></i></a>';
+	    };
+	    return Links;
+	}
+
+	var SocialLinks = function (_Component) {
+	    _inherits(SocialLinks, _Component);
+
+	    function SocialLinks(props) {
+	        _classCallCheck(this, SocialLinks);
+
+	        return _possibleConstructorReturn(this, (SocialLinks.__proto__ || Object.getPrototypeOf(SocialLinks)).call(this, props));
+	    }
+
+	    _createClass(SocialLinks, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.props.socialData) {
+	                return _react2.default.createElement('div', null);
+	            }
+	            console.log(this.props.socialData);
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'footer-main__container__social' },
+	                _react2.default.createElement(GenerateLinks, { data: this.props.socialData })
+	            );
+	        }
+	    }]);
+
+	    return SocialLinks;
+	}(_react.Component);
+
+	;
+	exports.default = SocialLinks;
 
 /***/ })
 /******/ ]);
