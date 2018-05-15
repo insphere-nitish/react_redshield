@@ -1,29 +1,26 @@
 import React, {Component} from 'react';
 
-function GenerateLinks(data){
-    var Links = '';
-    for (var social in data) {
-        Links += '<a href={social} target="_blank"><i class="fa fa-"+{social}+"-official"></i></a>'
-    };
-    return (Links);
-}
-class SocialLinks extends Component {
-    constructor(props){
-        super(props);
-    }
-    render() {
-        if(!this.props.socialData){
-            return <div></div>;
+const SocialLinks = (props) => {
+        if(!props.socialData){
+            return null;
         }
-        console.log(this.props.socialData);
-        
+        const obj = props.socialData;
+        let flag = 0;
+        for(let key in obj){
+            if(obj[key]){
+                flag = 1;
+            }
+        }
+        if(flag == 0){
+            return null;
+        }
         return (
             <div className="footer-main__container__social">
-                <GenerateLinks data={this.props.socialData}/>
+                {props.socialData.facebook && <a href={props.socialData.facebook} target="_blank"><i className="fa fa-facebook-official"></i></a>}
+                {props.socialData.twitter && <a href={props.socialData.twitter} target="_blank"><i className="fa fa-twitter"></i></a>}
+                {props.socialData.instagram && <a href={props.socialData.instagram} target="_blank"><i className="fa fa-instagram"></i></a>}
+                {props.socialData.youtube && <a href={props.socialData.youtube} target="_blank"><i className="fa fa-youtube-play"></i></a>}
             </div>
-        );
-    }
-    
-    
+        ); 
 };
 export default SocialLinks;

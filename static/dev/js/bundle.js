@@ -71,7 +71,7 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _footer = __webpack_require__(30);
+	var _footer = __webpack_require__(29);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -31997,8 +31997,7 @@
 	exports.default = Header;
 
 /***/ }),
-/* 29 */,
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32013,7 +32012,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _socialLinks = __webpack_require__(31);
+	var _socialLinks = __webpack_require__(30);
 
 	var _socialLinks2 = _interopRequireDefault(_socialLinks);
 
@@ -32159,16 +32158,14 @@
 	exports.default = Footer;
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(4);
 
@@ -32176,49 +32173,45 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	function GenerateLinks(data) {
-	    var Links = '';
-	    for (var social in data) {
-	        Links += '<a href={social} target="_blank"><i class="fa fa-"+{social}+"-official"></i></a>';
-	    };
-	    return Links;
-	}
-
-	var SocialLinks = function (_Component) {
-	    _inherits(SocialLinks, _Component);
-
-	    function SocialLinks(props) {
-	        _classCallCheck(this, SocialLinks);
-
-	        return _possibleConstructorReturn(this, (SocialLinks.__proto__ || Object.getPrototypeOf(SocialLinks)).call(this, props));
+	var SocialLinks = function SocialLinks(props) {
+	    if (!props.socialData) {
+	        return null;
 	    }
-
-	    _createClass(SocialLinks, [{
-	        key: 'render',
-	        value: function render() {
-	            if (!this.props.socialData) {
-	                return _react2.default.createElement('div', null);
-	            }
-	            console.log(this.props.socialData);
-
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'footer-main__container__social' },
-	                _react2.default.createElement(GenerateLinks, { data: this.props.socialData })
-	            );
+	    var obj = props.socialData;
+	    var flag = 0;
+	    for (var key in obj) {
+	        if (obj[key]) {
+	            flag = 1;
 	        }
-	    }]);
-
-	    return SocialLinks;
-	}(_react.Component);
-
-	;
+	    }
+	    if (flag == 0) {
+	        return null;
+	    }
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "footer-main__container__social" },
+	        props.socialData.facebook && _react2.default.createElement(
+	            "a",
+	            { href: props.socialData.facebook, target: "_blank" },
+	            _react2.default.createElement("i", { className: "fa fa-facebook-official" })
+	        ),
+	        props.socialData.twitter && _react2.default.createElement(
+	            "a",
+	            { href: props.socialData.twitter, target: "_blank" },
+	            _react2.default.createElement("i", { className: "fa fa-twitter" })
+	        ),
+	        props.socialData.instagram && _react2.default.createElement(
+	            "a",
+	            { href: props.socialData.instagram, target: "_blank" },
+	            _react2.default.createElement("i", { className: "fa fa-instagram" })
+	        ),
+	        props.socialData.youtube && _react2.default.createElement(
+	            "a",
+	            { href: props.socialData.youtube, target: "_blank" },
+	            _react2.default.createElement("i", { className: "fa fa-youtube-play" })
+	        )
+	    );
+	};
 	exports.default = SocialLinks;
 
 /***/ })
