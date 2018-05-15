@@ -75,6 +75,10 @@
 
 	var _footer2 = _interopRequireDefault(_footer);
 
+	var _cta_topHomePage = __webpack_require__(32);
+
+	var _cta_topHomePage2 = _interopRequireDefault(_cta_topHomePage);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -108,8 +112,33 @@
 
 	_reactDom2.default.render(_react2.default.createElement(HeaderSeaction, null), document.querySelector('.page__header'));
 
-	var FooterSection = function (_Component2) {
-	  _inherits(FooterSection, _Component2);
+	var TopCtaSeaction = function (_Component2) {
+	  _inherits(TopCtaSeaction, _Component2);
+
+	  function TopCtaSeaction() {
+	    _classCallCheck(this, TopCtaSeaction);
+
+	    return _possibleConstructorReturn(this, (TopCtaSeaction.__proto__ || Object.getPrototypeOf(TopCtaSeaction)).apply(this, arguments));
+	  }
+
+	  _createClass(TopCtaSeaction, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_cta_topHomePage2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return TopCtaSeaction;
+	}(_react.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(TopCtaSeaction, null), document.querySelector('.top__home_page__cta'));
+
+	var FooterSection = function (_Component3) {
+	  _inherits(FooterSection, _Component3);
 
 	  function FooterSection() {
 	    _classCallCheck(this, FooterSection);
@@ -32213,6 +32242,154 @@
 	    );
 	};
 	exports.default = SocialLinks;
+
+/***/ }),
+/* 31 */,
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TopHomePageCta = function (_Component) {
+	    _inherits(TopHomePageCta, _Component);
+
+	    function TopHomePageCta(props) {
+	        _classCallCheck(this, TopHomePageCta);
+
+	        var _this = _possibleConstructorReturn(this, (TopHomePageCta.__proto__ || Object.getPrototypeOf(TopHomePageCta)).call(this, props));
+
+	        _this.state = {
+	            ctaBackgroundImage: '',
+	            ctaVideoUrl: '',
+	            ctaDetails: null,
+	            videoClass: '',
+	            ctaStyle: {}
+
+	        };
+	        _this.getCta();
+	        _this.getCtaWithMeta();
+	        return _this;
+	    }
+
+	    _createClass(TopHomePageCta, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.state.ctaDetails) {
+	                return null;
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { className: "banner__section image-covered text-center " + this.state.videoClass + " cta_block_" + this.state.ctaDetails.id, style: this.state.ctaStyle },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'banner__section-content d-flex align-items-center flex-column justify-content-center m-auto' },
+	                                this.state.ctaVideoUrl && _react2.default.createElement('a', { 'data-fancybox': true, href: this.state.ctaVideoUrl, className: 'play-icon' }),
+	                                _react2.default.createElement(
+	                                    'h1',
+	                                    null,
+	                                    this.state.ctaDetails.title
+	                                ),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    this.state.ctaDetails.description
+	                                ),
+	                                this.state.ctaDetails.button.text && _react2.default.createElement(
+	                                    'a',
+	                                    { href: this.state.ctaDetails.button.url, target: '_blank', className: 'button button--red upper button--radius' },
+	                                    this.state.ctaDetails.button.text
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'getCta',
+	        value: function getCta() {
+	            var _this2 = this;
+
+	            $.fn.getCta({
+	                keywords: 'home_top_page',
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    console.log(data);
+	                    if (data.media.id) {
+	                        var ImageUrl = $.fn.image({ media: data.media, mediaOptions: { width: 1900, height: 1900, crop: 'limit' } });
+	                        console.log(ImageUrl);
+	                        _this2.setState({
+	                            ctaBackgroundImage: ImageUrl,
+	                            ctaDetails: data
+	                        });
+	                    }
+	                    if (_this2.state.ctaBackgroundImage) {
+	                        _this2.setState({
+	                            ctaStyle: {
+	                                backgroundColor: _this2.state.ctaDetails.backgroundColor,
+	                                backgroundImage: 'url(' + _this2.state.ctaBackgroundImage + ')'
+	                            }
+	                        });
+	                    }
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'getCtaWithMeta',
+	        value: function getCtaWithMeta() {
+	            var _this3 = this;
+
+	            $.fn.getCta({
+	                keywords: 'home_top_page',
+	                includeMetaInfo: 1,
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    console.log(data);
+	                    if (data.additionalInfo.length > 0) {
+	                        _this3.setState({
+	                            ctaVideoUrl: data.additionalInfo.cta_video_url
+	                        });
+	                    }
+	                    if (_this3.state.ctaVideoUrl) {
+	                        _this3.setState({
+	                            videoClass: 'video'
+	                        });
+	                    }
+	                }
+	            });
+	        }
+	    }]);
+
+	    return TopHomePageCta;
+	}(_react.Component);
+
+	;
+	exports.default = TopHomePageCta;
 
 /***/ })
 /******/ ]);

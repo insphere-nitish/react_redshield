@@ -8,7 +8,9 @@
 {#{{_AppHelper.printArray(blogList)}}#}
 {{this.registerJs("HomeController.listing();")}}
 <!-- Begin about Banner section markup -->
-{{ this.render('partials/_home-top-page.twig', {network:network, keyword: 'home_top_page'}) | raw }}
+{#{{ this.render('partials/_home-top-page.twig', {network:network, keyword: 'home_top_page'}) | raw }}#}
+<div class="top__home_page__cta"></div>
+
 {{ this.render('partials/_red_shield_appeal.twig', {network:network, keyword: 'red_shield_appeal'}) | raw }}
 
 <!-- End about Banner section markup -->
