@@ -11,12 +11,15 @@
 {#{{ this.render('partials/_home-top-page.twig', {network:network, keyword: 'home_top_page'}) | raw }}#}
 <div class="top__home_page__cta"></div>
 
-{{ this.render('partials/_red_shield_appeal.twig', {network:network, keyword: 'red_shield_appeal'}) | raw }}
+{#{{ this.render('partials/_red_shield_appeal.twig', {network:network, keyword: 'red_shield_appeal'}) | raw }}#}
+<div className="clearfix"></div>
+<div class="appeal__cta"></div>
 
 <!-- End about Banner section markup -->
 <!-- End About CTA section -->
 <div class="clearfix"></div>
 <!-- Begin learning CTA section -->
+<div class="articles__seaction"></div>
 
 {% if articles|length > 0 %}
     {% if articles[0] is defined %}

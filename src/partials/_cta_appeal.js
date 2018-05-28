@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class TopHomePageCta extends Component {
+class AppealCta extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -19,26 +19,26 @@ class TopHomePageCta extends Component {
             return null;
       }
       return (
-        <div className={"banner__section image-covered text-center "+this.state.videoClass+ " cta_block_"+
+        <div className={"cta-wrap cta-wrap__about "+this.state.videoClass+ " cta_block_"+
         this.state.ctaDetails.id} style={this.state.ctaStyle}>
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <div className="banner__section-content d-flex align-items-center flex-column justify-content-center m-auto">
-                            {this.state.ctaVideoUrl && <a data-fancybox href={this.state.ctaVideoUrl} className="play-icon"></a>}
-                            <h1>{this.state.ctaDetails.title}</h1>     
-                            <p>{this.state.ctaDetails.description}</p>
-                            {this.state.ctaDetails.button.text && <a href={this.state.ctaDetails.button.url} target="_blank" className="button button--red upper button--radius">{this.state.ctaDetails.button.text}</a>}   
+                        <div className="cta-wrap__main text-center">
+                            <div className="cta-wrap__main--title">{this.state.ctaDetails.title}</div>
+                            <div className="cta-wrap__main--description">
+                                {this.state.ctaDetails.description}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
       );
     }
     getCta(){
         $.fn.getCta({
-            keywords: 'home_top_page', 
+            keywords: 'red_shield_appeal', 
             onSuccess: (data, textStatus, jqXHR) => {
                 this.setState({
                     ctaDetails:data
@@ -63,7 +63,7 @@ class TopHomePageCta extends Component {
     }
     getCtaWithMeta(){
         $.fn.getCta({
-            keywords: 'home_top_page',
+            keywords: 'red_shield_appeal',
             includeMetaInfo: 1, 
             onSuccess: (data, textStatus, jqXHR) => {
                 if(data.additionalInfo.length > 0){
@@ -79,5 +79,6 @@ class TopHomePageCta extends Component {
             }
         });
     }
-};
-export default TopHomePageCta;
+}
+export default AppealCta;
+

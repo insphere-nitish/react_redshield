@@ -75,9 +75,17 @@
 
 	var _footer2 = _interopRequireDefault(_footer);
 
-	var _cta_topHomePage = __webpack_require__(32);
+	var _cta_topHomePage = __webpack_require__(31);
 
 	var _cta_topHomePage2 = _interopRequireDefault(_cta_topHomePage);
+
+	var _cta_appeal = __webpack_require__(32);
+
+	var _cta_appeal2 = _interopRequireDefault(_cta_appeal);
+
+	var _articles = __webpack_require__(33);
+
+	var _articles2 = _interopRequireDefault(_articles);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -137,8 +145,58 @@
 
 	_reactDom2.default.render(_react2.default.createElement(TopCtaSeaction, null), document.querySelector('.top__home_page__cta'));
 
-	var FooterSection = function (_Component3) {
-	  _inherits(FooterSection, _Component3);
+	var AppealCtaSeaction = function (_Component3) {
+	  _inherits(AppealCtaSeaction, _Component3);
+
+	  function AppealCtaSeaction() {
+	    _classCallCheck(this, AppealCtaSeaction);
+
+	    return _possibleConstructorReturn(this, (AppealCtaSeaction.__proto__ || Object.getPrototypeOf(AppealCtaSeaction)).apply(this, arguments));
+	  }
+
+	  _createClass(AppealCtaSeaction, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_cta_appeal2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return AppealCtaSeaction;
+	}(_react.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(AppealCtaSeaction, null), document.querySelector('.appeal__cta'));
+
+	var ArticlesSeaction = function (_Component4) {
+	  _inherits(ArticlesSeaction, _Component4);
+
+	  function ArticlesSeaction() {
+	    _classCallCheck(this, ArticlesSeaction);
+
+	    return _possibleConstructorReturn(this, (ArticlesSeaction.__proto__ || Object.getPrototypeOf(ArticlesSeaction)).apply(this, arguments));
+	  }
+
+	  _createClass(ArticlesSeaction, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_articles2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return ArticlesSeaction;
+	}(_react.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(ArticlesSeaction, null), document.querySelector('.articles__seaction'));
+
+	var FooterSection = function (_Component5) {
+	  _inherits(FooterSection, _Component5);
 
 	  function FooterSection() {
 	    _classCallCheck(this, FooterSection);
@@ -32244,8 +32302,7 @@
 	exports.default = SocialLinks;
 
 /***/ }),
-/* 31 */,
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32340,13 +32397,14 @@
 	            $.fn.getCta({
 	                keywords: 'home_top_page',
 	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
-	                    console.log(data);
+	                    _this2.setState({
+	                        ctaDetails: data
+	                    });
 	                    if (data.media.id) {
 	                        var ImageUrl = $.fn.image({ media: data.media, mediaOptions: { width: 1900, height: 1900, crop: 'limit' } });
 	                        console.log(ImageUrl);
 	                        _this2.setState({
-	                            ctaBackgroundImage: ImageUrl,
-	                            ctaDetails: data
+	                            ctaBackgroundImage: ImageUrl
 	                        });
 	                    }
 	                    if (_this2.state.ctaBackgroundImage) {
@@ -32369,7 +32427,6 @@
 	                keywords: 'home_top_page',
 	                includeMetaInfo: 1,
 	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
-	                    console.log(data);
 	                    if (data.additionalInfo.length > 0) {
 	                        _this3.setState({
 	                            ctaVideoUrl: data.additionalInfo.cta_video_url
@@ -32390,6 +32447,221 @@
 
 	;
 	exports.default = TopHomePageCta;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AppealCta = function (_Component) {
+	    _inherits(AppealCta, _Component);
+
+	    function AppealCta(props) {
+	        _classCallCheck(this, AppealCta);
+
+	        var _this = _possibleConstructorReturn(this, (AppealCta.__proto__ || Object.getPrototypeOf(AppealCta)).call(this, props));
+
+	        _this.state = {
+	            ctaBackgroundImage: '',
+	            ctaVideoUrl: '',
+	            ctaDetails: null,
+	            videoClass: '',
+	            ctaStyle: {}
+
+	        };
+	        _this.getCta();
+	        _this.getCtaWithMeta();
+	        return _this;
+	    }
+
+	    _createClass(AppealCta, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.state.ctaDetails) {
+	                return null;
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { className: "cta-wrap cta-wrap__about " + this.state.videoClass + " cta_block_" + this.state.ctaDetails.id, style: this.state.ctaStyle },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'cta-wrap__main text-center' },
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'cta-wrap__main--title' },
+	                                    this.state.ctaDetails.title
+	                                ),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'cta-wrap__main--description' },
+	                                    this.state.ctaDetails.description
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'getCta',
+	        value: function getCta() {
+	            var _this2 = this;
+
+	            $.fn.getCta({
+	                keywords: 'red_shield_appeal',
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    _this2.setState({
+	                        ctaDetails: data
+	                    });
+	                    if (data.media.id) {
+	                        var ImageUrl = $.fn.image({ media: data.media, mediaOptions: { width: 1900, height: 1900, crop: 'limit' } });
+	                        console.log(ImageUrl);
+	                        _this2.setState({
+	                            ctaBackgroundImage: ImageUrl
+	                        });
+	                    }
+	                    if (_this2.state.ctaBackgroundImage) {
+	                        _this2.setState({
+	                            ctaStyle: {
+	                                backgroundColor: _this2.state.ctaDetails.backgroundColor,
+	                                backgroundImage: 'url(' + _this2.state.ctaBackgroundImage + ')'
+	                            }
+	                        });
+	                    }
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'getCtaWithMeta',
+	        value: function getCtaWithMeta() {
+	            var _this3 = this;
+
+	            $.fn.getCta({
+	                keywords: 'red_shield_appeal',
+	                includeMetaInfo: 1,
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    if (data.additionalInfo.length > 0) {
+	                        _this3.setState({
+	                            ctaVideoUrl: data.additionalInfo.cta_video_url
+	                        });
+	                    }
+	                    if (_this3.state.ctaVideoUrl) {
+	                        _this3.setState({
+	                            videoClass: 'video'
+	                        });
+	                    }
+	                }
+	            });
+	        }
+	    }]);
+
+	    return AppealCta;
+	}(_react.Component);
+
+	exports.default = AppealCta;
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Articles = function (_Component) {
+	    _inherits(Articles, _Component);
+
+	    function Articles(props) {
+	        _classCallCheck(this, Articles);
+
+	        var _this = _possibleConstructorReturn(this, (Articles.__proto__ || Object.getPrototypeOf(Articles)).call(this, props));
+
+	        _this.state = {
+	            articles: [],
+	            limit: 13,
+	            existingNonPinnedCount: null
+	        };
+	        _this.getBlogFeed();
+	        return _this;
+	    }
+
+	    _createClass(Articles, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.state.articles) {
+	                return null;
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                'Articles Will go Here !!'
+	            );
+	        }
+	    }, {
+	        key: 'getBlogFeed',
+	        value: function getBlogFeed() {
+	            var _this2 = this;
+
+	            $.fn.getBlogFeed({
+	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
+	                    console.log(data);
+	                    _this2.setState({
+	                        articles: data.articles,
+	                        existingNonPinnedCount: data.existingNonPinnedCount
+	                    });
+	                }
+	            });
+	        }
+	    }]);
+
+	    return Articles;
+	}(_react.Component);
+
+	exports.default = Articles;
 
 /***/ })
 /******/ ]);
