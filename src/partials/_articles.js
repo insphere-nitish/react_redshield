@@ -23,6 +23,8 @@ class Articles extends Component {
     
     getBlogFeed(){
         $.fn.getBlogFeed({
+            limit: this.state.limit,
+            offset: 0,
             onSuccess: (data, textStatus, jqXHR) => {
                 console.log(data);
                 this.setState({

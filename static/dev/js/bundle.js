@@ -32647,6 +32647,8 @@
 	            var _this2 = this;
 
 	            $.fn.getBlogFeed({
+	                limit: this.state.limit,
+	                offset: 0,
 	                onSuccess: function onSuccess(data, textStatus, jqXHR) {
 	                    console.log(data);
 	                    _this2.setState({
